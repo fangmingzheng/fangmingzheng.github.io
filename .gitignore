@@ -1,5 +1,4 @@
-.bundle
-.sass-cache
 _site
+.sass-cache
+.c9
 Gemfile.lock
-.DS_Store
