@@ -1,126 +1,104 @@
-# LessOrMore
+Jekyll主题: SimpleGray
+======
 
+这是一个由[造轮子工程师][]设计的jekyll站点主题，中文名称：**极简灰**。
 
-致谢
-====================================
-+ 感谢[Less官网](http://lesscss.cn/)的样式，本Jekyll框架的样式都是基于Less官网的样式直接拷贝过来的。只是重构了JS，并且加入了Jekyll语法而已。
-+ 感谢[Github](https://github.com/)提供的代码维护和发布平台
-+ 感谢[Jekyll](https://jekyllrb.com/)团队做出如此优秀的产品
-+ 感谢[Solar](https://github.com/mattvh/solar-theme-jekyll)的原作者[Matt Harzewski](http://www.webmaster-source.com/)，在`2014.11`-`2016.09`的两年间，我的博客选用了此样式模版
+利用这个模板可以帮助你在GitHub上快速的搭建一个极简风格的博客站点。
 
+![SimpleGray](http://mbed.qiniudn.com/yanjunyi.com/img/works/SimpleGray.jpg)
 
-使用
-====================================
+## 如何使用 ##
 
-下载
-------------------------------------
+### 开始之前 ###
 
-使用git从[LessOrMore](https://github.com/luoyan35714/LessOrMore.git)主页下载项目
+首先请确保你已经了解[GitHub Pages](http://pages.github.com/)和[jekyll](github.com/mojombo/jekyll)是如何使用的（推荐阅读：[Publishing a Blog with GitHub Pages and Jekyll](http://blog.envylabs.com/2009/08/publishing-a-blog-with-github-pages-and-jekyll/)和[Jekyll-Bootstrap](http://jekyllbootstrap.com/)，扩展了解：[Octopress](http://octopress.org/)）。
 
-``` bash
-git clone https://github.com/luoyan35714/LessOrMore.git
-```
+### 获得源代码 ###
 
-配置
-------------------------------------
+直接clone这个仓库到本地：
 
-`LessOrMore`项目需要配置的只有一个文件`_config.yml`，打开之后按照如下进行配置。
+	$ git clone --recursive git://github.com/mytharcher/SimpleGray.git your-repo-name
 
-> 特别注意`baseurl`的配置。如果是`***.github.io`项目，不修改为空''的话，会导致JS,CSS等静态资源无法找到的错误
+**注意！**
 
-``` bash
-name: 博客名称
-email: 邮箱地址
-author: 作者名
-url: 个人网站
-# baseurl修改为项目名，如果项目是'***.github.io'，则设置为空''
-baseurl: "/LessOrMore"
-resume_site: 个人简历网站
-github: github地址
-github_username: github用户名称
-# 请到百度统计官网[https://tongji.baidu.com/](https://tongji.baidu.com/)申请自己的网站ID并在此处替换，否则将无法正常统计访问量
-baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
-# 请到revolvermaps [http://www.revolvermaps.com/?target=setupgl](http://www.revolvermaps.com/?target=setupgl)申请自己的网站ID并在此处替换，否则将无法正常统计访问量
-revolvermaps: 5ytn1ssq6za
-```
+除非你想改进这个主题，否则请不要fork此项目作为你博客的起点，因为fork后你的所有提交和推送都会在整个network图中显示出来。
 
-关于统计
-------------------------------------
+所以更推荐你使用clone的方式创建自己的站点，以免给所有使用此主题的人造成干扰。
 
-本项目支持三种统计，分别是
+### 修改站点信息 ###
 
-+ [百度统计](https://tongji.baidu.com)
+要将这个主题修改为自己的站点，有更多的工作要做。一部分变量可以直接在`_config.yml`里配置。这里列了一个清单，可以按此步骤进行修改。
 
-百度统计是后台统计，并没有再页面有任何展示，但是可以通过登录百度统计官网查看更详细的访问记录分析。
-当Fork本项目之后需要去百度统计官网申请自己的baidu统计ID替换 `_config.yml` 文件中的 `baidu_analysis`。
+0.	**站点名称**
+	
+	修改`_config.yml`文件中的变量：`name`为站点名称，`host`为站点域名。
 
-+ [revolvermaps地图统计](http://www.revolvermaps.com/)
+0.	**博客的分类**
+	
+	作者在jekyll的使用过程中一直未找到方便管理分类列表的方式，所以在这个主题里使用了两组变量和文件夹配置来管理博客文章的分类。鉴于一般分类不会太多，暂时使用手动处理也不会太麻烦。
 
-revolvermaps地图统计是展示在左侧当行栏的地图展示，具体展示形式可以去官网定制。
-当Fork本项目之后需要去revolvermaps地图官网申请自己的统计ID， 替换`_config.yml` 文件中的 `revolvermaps`。
+	首先修改`_config.yml`文件中的`custom.category`（Map）和`custom.categories`（List）两组变量，务必互相对应。
 
-+ [不蒜子统计](http://busuanzi.ibruce.info/)
+	然后参照`category/default`目录对应之前的变量设置更多分类索引文件夹，并修改其中的`index.html`，用对应分类的变量名替换之前的。
 
-不蒜子统计是出现在页面右上角的`本站总访问量n次`统计，本统计会自动识别客户所对应的域名，根据不同域名统计，所以并不需要Fork本项目者做任何修改。
-更多不蒜子的展示方式可以去官网查看。
+	完成之后就可以在文章中使用你自己定义的分类了。
 
+0.	**作者信息**
+	
+	你应该看到`_config.yml`中有一部分`meta`变量的内容都是作者相关的信息，恩，就是这了，修改里面`author`信息块就可以了。
 
-如何写文章
-------------------------------------
+	其中[Gravatar][]头像标识需要使用你自己的gravatar注册的邮箱MD5值替换，就可以在页面上显示自己的头像了。
 
-在`LessOrMore/_posts`目录下新建一个文件，可以创建文件夹并在文件夹中添加文件，方便维护。在新建文件中粘贴如下信息，并修改以下的`titile`,`date`,`categories`,`tag`的相关信息，添加`* content {:toc}`为目录相关信息，在进行正文书写前需要在目录和正文之间输入至少2行空行。然后按照正常的Markdown语法书写正文。
+	PS: 页面右侧作者信息块中有个隐藏的作者邮件地址，为了防止被爬虫抓取，我把邮件地址写在了`assets/css/site.css`里，打开看看，你能找到！
 
-``` bash
----
-layout: post
-#标题配置
-title:  标题
-#时间配置
-date:   2016-08-27 01:08:00 +0800
-#大类配置
-categories: document
-#小类配置
-tag: 教程
----
+0.	**[Disqus][]云评论代码**
+	
+	`_config.yml`的`author`配置部分也有`disqus`一项，配置为你创建的站点短名称标识串即可。之后每一篇日志后就会显示评论列表了，但这个功能只有在真实线上域名的时候才会生效。
 
-* content
-{:toc}
+0.	**站内搜索**
 
+	如果你需要站内搜索功能，那么最好的办法就是申请[Google Custom Search][](CSE)服务。
 
-我是正文。我是正文。我是正文。我是正文。我是正文。我是正文。
-```
+	主题中已经配置了作者站点的站内搜索为默认引擎，具体设置也在`_config.yml`中的`author`部分，`gcse`字段。将其中引擎用户ID字符串改为你自己的即可。
 
-执行
-------------------------------------
+0.	安装[Google Analytics][]或其他站点统计代码
+	
+	主题作者对访问量不是很敏感，所以没有安装统计代码。如果需要安装，可以在`_layout/page.tpl`文件中加入统计代码，之后每个生成的页面就都可以被统计到了。
 
-``` bash
-jekyll server
-```
+0.	**修改CNAME**
 
-效果
-------------------------------------
-打开浏览器并输入URL`http://localhost:4000/`,回车。
+	按照jekyll官方的说明，使用你自己的域名替换`CNAME`文件中的内容，如果有多个别名，每行一个。
 
+### 基于Reveal.js的PPT模板 ###
 
-为什么重复造轮子
-====================================
+SimpleGray默认引入了[Reveal.js](http://lab.hakim.se/reveal-js/)作为演示页面的展示引擎。在任意一篇博客中把`layout`变量设置为`presentation`（即使用演示模板）就可以将文章页转化为一个PPT浏览。具体语法请参照Reveal.js主页中的说明。
 
-很明显，我在重复造轮子。在13年接触到GIT，14年末接触到Jekyll，然后搭建了自己的博客，当时是选用了[JekyllThemes](http://jekyllthemes.org/)上的[Solar](https://github.com/mattvh/solar-theme-jekyll)主题，一直到现在。不过中间一直感觉页面风格还是偏暗，阅读不方便。并且有一些小的细节做的不是很好。在页面的跨平台浏览上有一些瑕疵。并且不区分一级标题和二级标题，导致没有重点强调。诸如此类，用了2年，用的越多，越发吃力，中间就一直在寻找新的能够让我一眼认定的主题。
+### JavaScript相关扩展功能 ###
 
-虽然设计好看的主题很多。但是真正适合拿来做博客的却不多。中间一直没有找到合适的主题。直到有一天看到Less官网的主题之后，豁然觉得这就是我的博客想要的样子。简单而又不平凡。所以就决定了要把博客迁移到这个主题，然后拿了两天晚上来把这个主题做出来。
+这个主题使用了作者[造轮子工程师][]开发的[elf+js][]，这是一个和jQuery一样简单的JS基础库，详细的请点击链接进入官网了解。
 
-重复造了轮子，但是这个是迄今为止自己觉得最适合我的博客的轮子，所以是值得的！
+全站相关的JS都在`assets/js/site.js`一个文件里，不大，提供了几个功能：
 
-关于作者
-====================================
+*	代码高亮初始化
+	
+*	Disqus评论初始化
+	
+*	站内搜索初始化
+	
+*	滚动页面时自动延迟加载对应在显示区域内的文章
+	
+	在`_config.yml`的`custom`中新增一个配置项`scrollingLoadCount`，用于配置滚屏时自动加载的文章数量，“0”为不在滚屏时加载。
 
-热爱开源，热爱折腾的Java程序猿。更多个人信息和联系方式可以参照[我的简介](http://www.hifreud.com/Resume.io/)。
+其他自己摸索吧，代码就那么点，都很简单的，哥实在懒得写了。
 
-写在最后
-====================================
+## 基于此主题的站点
 
-如果你也像我一样在寻觅一个简洁的博客主题。不妨试下LessOrMore。
+如果你也使用了这个主题，可以项目[wiki](https://github.com/mytharcher/SimpleGray/wiki)里添加你的站点链接。
 
-之前此处是有打赏功能的，不过最近在整理自己，发现打赏功能偏离了我写这个Jekyll主题的初衷，所以删除了打赏功能。
+[Disqus]: http://www.disqus.com/
+[elf+js]: http://elf.js.org/
+[Google Analytics]: http://www.google.com/analytics/
+[Google Custom Search]: http://www.google.com/cse/
+[Gravatar]: http://gravatar.com/
+[造轮子工程师]: https://github.com/mytharcher
 
-非常感谢之前打赏过的朋友们！！
